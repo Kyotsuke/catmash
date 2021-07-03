@@ -1,6 +1,6 @@
 <template>
   <v-container>
-      <Navbar />
+      <Navbar @results="getResults" />
       <CatMash v-if="results != true" />
       <Results v-if="results != false" />
   </v-container>
@@ -21,7 +21,12 @@ export default {
   },
   data () {
     return {
-      results: true
+      results: false
+    }
+  },
+  methods: {
+    getResults(target) {
+      this.results = target;
     }
   }
 };
