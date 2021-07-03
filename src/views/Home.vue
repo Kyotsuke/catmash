@@ -7,12 +7,18 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import CatMash from "../components/CatMash";
 
 export default {
   name: "Home",
 
   components: {
-    Navbar
+    Navbar,
+    CatMash
   },
 };
 </script>
+
+<style scoped>
+
+</style>
