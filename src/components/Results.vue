@@ -1,0 +1,18 @@
+<template>
+    <v-row>
+        <p>results</p>
+    </v-row>
+</template>
+
+<script>
+export default {
+  name: "Results",
+  props: {
+    // msg: String,
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
