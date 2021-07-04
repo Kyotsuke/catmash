@@ -34,6 +34,9 @@
 </template>
 
 <script>
+
+import firebase from 'firebase/app'
+
 export default {
   name: "Results",
   props: {
@@ -41,13 +44,39 @@ export default {
   },
   data () {
       return{
-          more: false
+          more: false,
+          cats: {},
       }
   },
   methods: {
       seeMore: function(more) {
         this.more = more;
+    },
+
+    getCats: function() {
+        // let self = this;
+        const dbRef = firebase.database().ref();
+        dbRef.child("cats").get().then((snapshot) => {
+        if (snapshot.exists()) {
+            this.cats = snapshot.val();
+        } else {
+            console.log("No data available");
+        }
+        }).catch((error) => {
+            console.error(error);
+        });
+
+        // $.getJSON('https://latelier.co/data/cats.json', function(data) {
+        //     self.cats = data.images;
+        //     self.catsCount = data.images.length
+        //     self.selectTwoCats();
+        // });
+    },
       }
+  },
+
+  mounted() {
+      this.getCats();
   },
 };
 </script>
