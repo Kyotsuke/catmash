@@ -5,16 +5,16 @@
                 <img src="../assets/podium.png" alt="podium">
             </div>
             <div class="cat_container first">
-                <img src="../assets/cat_1.jpg" alt="cat_1">
-                <p>Votes : 985474</p>
+                <img :src="numberOne.url" alt="cat_1">
+                <p>Votes : {{numberOne.vote}}</p>
             </div>
             <div class="cat_container second">
-                <img src="../assets/cat_2.jpg" alt="cat_2">
-                <p>Votes : 98547</p>
+                <img :src="numberTwo.url" alt="cat_2">
+                <p>Votes : {{numberTwo.vote}}</p>
             </div>
             <div class="cat_container third">
-                <img src="../assets/cat_3.jpg" alt="cat_3">
-                <p>Votes : 98547</p>
+                <img :src="numberThree.url" alt="cat_3">
+                <p>Votes : {{numberThree.vote}}</p>
             </div>
             <div class="more">
                 <button @click="seeMore(true)">Voir les autres chats</button>
@@ -52,7 +52,7 @@ export default {
       }
   },
   methods: {
-      seeMore: function(more) {
+    seeMore: function(more) {
         this.more = more;
     },
 
@@ -91,7 +91,7 @@ export default {
         this.numberThree = cats[2];
 
         this.cats = cats;
-      }
+    }
   },
 
   mounted() {
