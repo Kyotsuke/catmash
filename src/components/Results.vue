@@ -17,7 +17,7 @@
                 <p>Votes : {{numberThree.vote}}</p>
             </div>
             <div class="more">
-                <button @click="seeMore(true)">Voir les autres chats</button>
+                <button @click="seeMore(true)">Show other cats results</button>
             </div>
         </v-col>
         <v-col cols="12" class="more_cats" v-if="more == true">
@@ -34,10 +34,10 @@
                     <button @click="seeMore(false)">Podium</button>
                 </v-col>
                 <v-col cols="2" offset="2" align="center" class="change_page_btn">
-                    <button @click="changePage('prev')" v-if="page > 1">Précédent</button>
+                    <button @click="changePage('prev')" v-if="page > 1">Previous</button>
                 </v-col>
                 <v-col cols="2" align="center" class="change_page_btn">
-                    <button @click="changePage('next')" v-if="page < numberOfPages">Suivant</button>
+                    <button @click="changePage('next')" v-if="page < numberOfPages">Next</button>
                 </v-col>
             </v-row>
         </v-col>
