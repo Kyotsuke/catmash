@@ -28,7 +28,8 @@ export default {
     }
   },
   methods: {
-    createCats: function () {
+   // get all Cats from a JSON on web via an URL and push them in firebase database
+    pushCats: function () {
       const dbRef = firebase.database().ref();
       let cats = [];
       let self = this;
@@ -38,22 +39,24 @@ export default {
       });
 
       dbRef.child("cats").get().then((snapshot) => {
-        if (snapshot.exists()) {
+        if (snapshot.exists()) { // if there is already data in /cats
           let dbValue = snapshot.val()
-          if(Object.keys(dbValue).length !== cats.length) {
+
+          if(Object.keys(dbValue).length !== cats.length) { // if there is a difference between the JSON file and database lenght then update database
             self.updateCats(cats);
-          } else {
+          } else { // if the JSON file and  database have the same length then do nothing
             console.log("Data already available");
           }
-        } else {
-          self.createCat(cats);
+        } else { // if there is no data in /cats then push all the JSON file in database
+          self.createCats(cats);
         }
         }).catch((error) => {
             console.error(error);
         });
     },
 
-    createCat: function (cats){
+   // create new data in database from an array
+    createCats: function (cats){
       for (let index = 0; index < cats.length; index++) {
         let cat = cats[index];
 
@@ -64,6 +67,7 @@ export default {
       }
     },
 
+   // function to only update data that are missing in database using an array
     updateCats: function (cats){
       for (let index = 0; index < cats.length; index++) {
         let cat = cats[index];
@@ -75,13 +79,14 @@ export default {
       }
     },
 
+   // get a boolean value from Navbar component that is use to show or not a specific component
     getResults: function(target) {
       this.results = target;
     }
   },
 
   created() {
-    this.createCats();
+    this.pushCats();
   },
 };
 </script>
