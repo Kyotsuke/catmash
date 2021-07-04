@@ -1,6 +1,6 @@
 <template>
     <v-row>
-        <v-col col="12" align="center" v-if="more == false">
+        <v-col cols="12" align="center" v-if="more == false">
             <div class="img_container">
                 <img src="../assets/podium.png" alt="podium">
             </div>
@@ -20,13 +20,22 @@
                 <button @click="seeMore(true)">Voir les autres chats</button>
             </div>
         </v-col>
-        <v-col col="12" v-if="more == true">
+        <v-col cols="12" class="more_cats" v-if="more == true">
             <v-row>
-                <v-col align="center">
+                <v-col align="center" v-for="cat in currentPage" :key="cat.id">
                     <div class="cat_container_more">
-                    <img src="../assets/cat_4.jpg" alt="cat_4">
-                        <p>Votes : 98547</p>
+                    <img :src="cat.url" alt="cat_4">
+                        <p>Votes : {{cat.vote}}</p>
                     </div>
+                </v-col>
+                <v-col cols="2" align="center" class="return_btn">
+                    <button @click="seeMore(false)">Podium</button>
+                </v-col>
+                <v-col cols="2" offset="2" align="center" class="change_page_btn">
+                    <button @click="changePage('prev')" v-if="page > 1">Précédent</button>
+                </v-col>
+                <v-col cols="2" align="center" class="change_page_btn">
+                    <button @click="changePage('next')" v-if="page < numberOfPages">Suivant</button>
                 </v-col>
             </v-row>
         </v-col>
@@ -48,7 +57,11 @@ export default {
           cats: {},
           numberOne: {},
           numberTwo: {},
-          numberThree: {}
+          numberThree: {},
+          pages: {},
+          page: 1,
+          currentPage: [],
+          numberOfPages: 0
       }
   },
   methods: {
@@ -92,7 +105,33 @@ export default {
 
         cats.splice(0, 3);
 
+        this.splitRanking(cats);
+
         this.cats = cats;
+    },
+
+    splitRanking: function(cats){
+        let catsLength = cats.length;
+        let numberPerPages = 33;
+        let numberOfPages = Math.ceil(catsLength / numberPerPages);
+        let pages = {};
+        for (let index = 1; index <= numberOfPages; index++) {
+            pages['page_'+index] = cats.splice(0, numberPerPages);
+        }
+
+        this.pages = pages;
+        this.currentPage = this.pages["page_"+this.page];
+        this.numberOfPages = numberOfPages;
+    },
+
+    changePage: function(value){
+        if (value == "next"){
+            this.page++;
+            this.currentPage = this.pages["page_"+this.page];
+        } else {
+            this.page--
+            this.currentPage = this.pages["page_"+this.page];
+        }
     }
   },
 
@@ -135,16 +174,28 @@ export default {
         top: -34rem;
     }
 
+    .first img{
+        border: 5px solid rgb(255, 187, 0);
+    }
+
     .second{
         position: relative;
         top: -50rem;
         right: 16.5rem;
     }
 
+    .second img{
+        border: 5px solid rgb(156, 156, 156);
+    }
+
     .third{
         position: relative;
         top: -68rem;
         left: 16rem;
+    }
+
+    .third img{
+        border: 5px solid rgb(179, 126, 48);
     }
 
     .more{
@@ -163,5 +214,25 @@ export default {
         height: 100%;
         object-fit: cover;
         border-radius: 100%;
+    }
+
+    .return_btn button{
+        margin-top: 2rem;
+        padding: 0.5rem 2rem;
+        width: 100%;
+        border: 3px solid rgb(255, 196, 86);
+        border-radius: 10px;
+        font-weight: bold;
+        background-color: #ddd;
+    }
+
+    .change_page_btn button{
+        margin-top: 2rem;
+        padding: 0.5rem 2rem;
+        width: 100%;
+        border: 3px solid rgb(86, 117, 255);
+        border-radius: 10px;
+        font-weight: bold;
+        background-color: #ddd;
     }
 </style>
