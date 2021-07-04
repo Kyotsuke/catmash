@@ -62,7 +62,7 @@ export default {
 
         firebase.database().ref('cats/'+cat.id).set({    
           id: cat.id,
-          img: cat.url
+          url: cat.url
         });
       }
     },
@@ -74,7 +74,7 @@ export default {
 
         firebase.database().ref('cats/'+cat.id).update({    
           id: cat.id,
-          img: cat.url
+          url: cat.url
         });
       }
     },
