@@ -42,8 +42,11 @@ export default {
     max-width: 5vw;
   }
 
+  .nav_btn{
+      margin-top: 1rem;
+  }
+
   .nav_btn a{
-      margin-top: 5rem;
       padding: 0.5rem 2rem;
       border: 3px solid rgb(86, 117, 255);
       border-radius: 10px;
