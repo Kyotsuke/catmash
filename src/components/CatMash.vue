@@ -107,8 +107,10 @@ export default {
 
     },
 
-    getVote: function(id){
+    // get vote count from a cat then push it in this.cats
+    getVote: function(cat){
         const dbRef = firebase.database().ref();
+        let id = cat.id;
         dbRef.child("cats").child(id).get().then((snapshot) => {
         if (snapshot.exists()) {
             if (snapshot.val().vote === undefined){
@@ -125,8 +127,9 @@ export default {
         });
     },
 
+    // get vote of the specific cat then add one vote before pushing in database
     voteForCat: function(cat){
-        this.getVote(cat.id);
+        this.getVote(cat);
         firebase.database().ref('cats/'+cat.id).update({    
           vote: cat.vote+1
         });
