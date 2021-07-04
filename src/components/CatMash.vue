@@ -1,7 +1,7 @@
 <template>
     <v-row>
         <v-col cols="6" align="center" v-for="cat in selectedCats" :key="cat.url">
-            <div class="img_container">
+            <div class="img_container" @click="voteForCat(cat)">
                 <img :src="cat.url" :alt="cat.url">
             </div>
         </v-col>
@@ -32,7 +32,7 @@ export default {
   methods: {
     // function to get all Cats from a database and store then in this.cats
     // after that, get two cats from selectTwoCats function
-      getCats: function() {
+    getCats: function() {
         // let self = this;
         const dbRef = firebase.database().ref();
         dbRef.child("cats").get().then((snapshot) => {
@@ -53,19 +53,19 @@ export default {
         //     self.catsCount = data.images.length
         //     self.selectTwoCats();
         // });
-      },
-      
+    },
+        
     // function to get a cat from this.cats with is id
-      getCat: function(id) {
+    getCat: function(id) {
         // let cat = this.cats[id];
         let cat = this.cats[Object.keys(this.cats)[id]]
         this.selectedCats.push(cat);
-      },
-    
+    },
+
     // function to select two cats, randomly, with getCat() function and
     // prevent duplicate cats and/or cats that have already been selected
     // by pushing them in this.alreadySelected
-      selectTwoCats: function() {
+    selectTwoCats: function() {
         this.selectedCats = [];
         let first = Math.floor(Math.random() * this.catsCount);
         let second = Math.floor(Math.random() * this.catsCount);
@@ -104,9 +104,37 @@ export default {
 
             console.log(first+" "+second);          
         }
-      }
+
+    },
+
+    getVote: function(id){
+        const dbRef = firebase.database().ref();
+        dbRef.child("cats").child(id).get().then((snapshot) => {
+        if (snapshot.exists()) {
+            if (snapshot.val().vote === undefined){
+                this.cats[id].vote = 0;
+            } else {
+                this.cats[id].vote = snapshot.val().vote;
+            }
+            // this.cats[id].vote = snapshot.val().vote;
+        } else {
+            console.log("No votes");
+        }
+        }).catch((error) => {
+            console.error(error);
+        });
+    },
+
+    voteForCat: function(cat){
+        this.getVote(cat.id);
+        firebase.database().ref('cats/'+cat.id).update({    
+          vote: cat.vote+1
+        });
+
+        this.selectTwoCats();
+    }
   },
-  beforeMount() {
+  mounted() {
     // when created, get all Cats
     this.getCats();
   }
