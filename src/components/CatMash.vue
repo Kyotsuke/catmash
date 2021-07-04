@@ -100,9 +100,7 @@ export default {
             this.alreadySelected.push(first, second);
 
             this.getCat(first);
-            this.getCat(second);
-
-            console.log(first+" "+second);          
+            this.getCat(second);         
         }
 
     },
