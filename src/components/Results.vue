@@ -28,6 +28,8 @@
                         <p>Votes : {{cat.vote}}</p>
                     </div>
                 </v-col>
+            </v-row>
+            <v-row>
                 <v-col cols="2" align="center" class="return_btn">
                     <button @click="seeMore(false)">Podium</button>
                 </v-col>
