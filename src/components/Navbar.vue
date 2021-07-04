@@ -5,10 +5,10 @@
         </v-col>
         <v-col cols="4" offset="4" align="right">
             <div @click="openResults(true)" v-if="results != true">
-                <router-link to="/">Afficher les résultats</router-link>
+                <router-link to="/">Show results</router-link>
             </div>
             <div @click="openResults(false)" v-if="results != false">
-                <router-link to="/">Retour aux choix</router-link>
+                <router-link to="/">Back to Catmash</router-link>
             </div>
         </v-col>
     </v-row>
