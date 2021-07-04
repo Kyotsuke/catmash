@@ -62,7 +62,8 @@ export default {
 
         firebase.database().ref('cats/'+cat.id).set({    
           id: cat.id,
-          url: cat.url
+          url: cat.url,
+          vote: 0
         });
       }
     },
