@@ -1,5 +1,5 @@
 <template>
-    <v-row>
+    <v-row class="nav">
         <v-col cols="4">
           <a href="/"><img src="../assets/catmash_logo.png" alt="Logo" class="logo"></a>
         </v-col>
@@ -38,12 +38,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .nav{
+    background-color: #ccc;
+    border-bottom: 1px solid #000;
+  }
   .logo{
     max-width: 5vw;
   }
 
   .nav_btn{
-      margin-top: 1rem;
+      margin-top: 2rem;
   }
 
   .nav_btn a{

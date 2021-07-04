@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid class="main">
       <Navbar @results="getResults" />
       <CatMash v-if="results != true" />
       <Results v-if="results != false" />
@@ -93,5 +93,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .main{
+    background: linear-gradient(90deg, rgb(233, 233, 233) 50%, rgb(230, 230, 230) 50%);
+    height: 100rem;
+  }
 </style>
