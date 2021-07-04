@@ -90,6 +90,8 @@ export default {
         this.numberTwo = cats[1];
         this.numberThree = cats[2];
 
+        cats.splice(0, 3);
+
         this.cats = cats;
     }
   },
