@@ -245,4 +245,8 @@ export default {
         font-weight: bold;
         background-color: #ddd;
     }
+
+    button:hover{
+        background-color: #eee;
+    }
 </style>
