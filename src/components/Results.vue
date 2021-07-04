@@ -46,6 +46,9 @@ export default {
       return{
           more: false,
           cats: {},
+          numberOne: {},
+          numberTwo: {},
+          numberThree: {}
       }
   },
   methods: {
@@ -59,6 +62,7 @@ export default {
         dbRef.child("cats").get().then((snapshot) => {
         if (snapshot.exists()) {
             this.cats = snapshot.val();
+            this.sortCatsByVotes();
         } else {
             console.log("No data available");
         }
@@ -72,6 +76,21 @@ export default {
         //     self.selectTwoCats();
         // });
     },
+
+    sortCatsByVotes: function(){
+        let cats = this.cats;
+        cats = Object.keys(cats).map(key => {
+            return cats[key];
+        })
+        cats.sort((a, b) => {
+            return b.vote - a.vote;
+        });
+
+        this.numberOne = cats[0];
+        this.numberTwo = cats[1];
+        this.numberThree = cats[2];
+
+        this.cats = cats;
       }
   },
 
