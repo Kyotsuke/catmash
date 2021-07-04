@@ -1,9 +1,9 @@
 <template>
     <v-row>
-        <v-col col="4">
+        <v-col cols="4">
             <img src="../assets/catmash_logo.png" alt="Logo" class="logo">
         </v-col>
-        <v-col col="4" offest="4" align="right">
+        <v-col cols="4" offset="4" align="right">
             <div @click="openResults(true)" v-if="results != true">
                 <router-link to="/">Afficher les résultats</router-link>
             </div>
