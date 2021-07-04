@@ -25,7 +25,6 @@ export default {
         cats : [],
         catsCount : 0,
         selectedCats : [],
-        alreadySelected : [],
         notEnough: false
       }
   },
@@ -71,38 +70,22 @@ export default {
         let second = Math.floor(Math.random() * this.catsCount);
         let duplicate = false;
 
-        if (this.alreadySelected.length > this.catsCount-1) {
-            this.notEnough = true
+        if (second == first){
+            duplicate = true;
         }
 
-        if (this.notEnough != true) {
-            while (this.alreadySelected.indexOf(first) != -1) {
-                first = Math.floor(Math.random() * this.catsCount);
+        while (duplicate !== false) {
+            second = Math.floor(Math.random() * this.catsCount);
+            console.log("DUPLICATE");
+
+            if (second != first){
+                console.log("OK");
+                duplicate = false;
             }
-
-            while (this.alreadySelected.indexOf(second) != -1) {
-                second = Math.floor(Math.random() * this.catsCount);
-
-                if (second == first){
-                    duplicate = true;
-                }
-
-                while (duplicate !== false) {
-                    second = Math.floor(Math.random() * this.catsCount);
-                    console.log("DUPLICATE");
-
-                    if (second != first){
-                        duplicate = false;
-                    }
-                }
-            }
-
-            this.alreadySelected.push(first, second);
-
-            this.getCat(first);
-            this.getCat(second);         
         }
 
+        this.getCat(first);
+        this.getCat(second);
     },
 
     // get vote count from a cat then push it in this.cats
