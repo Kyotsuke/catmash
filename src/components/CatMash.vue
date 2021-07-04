@@ -13,7 +13,9 @@
 </template>
 
 <script>
-import $ from 'jquery';
+
+import firebase from 'firebase/app'
+// import $ from 'jquery';
 
 export default {
   name: "CatMash",
@@ -28,21 +30,35 @@ export default {
       }
   },
   methods: {
-    // function to get all Cats from a JSON on web via an URL and store then in this.cats
+    // function to get all Cats from a database and store then in this.cats
     // after that, get two cats from selectTwoCats function
       getCats: function() {
-        let self = this;
+        // let self = this;
+        const dbRef = firebase.database().ref();
+        dbRef.child("cats").get().then((snapshot) => {
+        if (snapshot.exists()) {
+            this.cats = snapshot.val()
+            this.catsCount = Object.keys(this.cats).length;
 
-        $.getJSON('https://latelier.co/data/cats.json', function(data) {
-            self.cats = data.images;
-            self.catsCount = data.images.length
-            self.selectTwoCats();
+            this.selectTwoCats();
+        } else {
+            console.log("No data available");
+        }
+        }).catch((error) => {
+            console.error(error);
         });
+
+        // $.getJSON('https://latelier.co/data/cats.json', function(data) {
+        //     self.cats = data.images;
+        //     self.catsCount = data.images.length
+        //     self.selectTwoCats();
+        // });
       },
       
     // function to get a cat from this.cats with is id
       getCat: function(id) {
-        let cat = this.cats[id]
+        // let cat = this.cats[id];
+        let cat = this.cats[Object.keys(this.cats)[id]]
         this.selectedCats.push(cat);
       },
     
@@ -90,7 +106,7 @@ export default {
         }
       }
   },
-  created() {
+  beforeMount() {
     // when created, get all Cats
     this.getCats();
   }
