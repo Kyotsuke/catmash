@@ -16,7 +16,7 @@
                 <img :src="numberThree.url" alt="cat_3">
                 <p>Votes : {{numberThree.vote}}</p>
             </div>
-            <div class="more">
+            <div class="more_btn">
                 <button @click="seeMore(true)">Show other cats results</button>
             </div>
         </v-col>
@@ -200,9 +200,17 @@ export default {
         border: 5px solid rgb(179, 126, 48);
     }
 
-    .more{
+    .more_btn{
         position: relative;
         top: -50rem;
+    }
+
+    .more_btn button{
+        padding: 0.5rem 2rem;
+        border: 3px solid rgb(86, 117, 255);
+        border-radius: 10px;
+        font-weight: bold;
+        background-color: #ddd;
     }
 
     .cat_container_more{
