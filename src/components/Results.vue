@@ -6,15 +6,15 @@
             </div>
             <div class="cat_container first">
                 <img :src="numberOne.url" alt="cat_1">
-                <p>Votes : {{numberOne.vote}}</p>
+                <p class="vote">Votes : {{numberOne.vote}}</p>
             </div>
             <div class="cat_container second">
                 <img :src="numberTwo.url" alt="cat_2">
-                <p>Votes : {{numberTwo.vote}}</p>
+                <p class="vote">Votes : {{numberTwo.vote}}</p>
             </div>
             <div class="cat_container third">
                 <img :src="numberThree.url" alt="cat_3">
-                <p>Votes : {{numberThree.vote}}</p>
+                <p class="vote">Votes : {{numberThree.vote}}</p>
             </div>
             <div class="more_btn">
                 <button @click="seeMore(true)">Show other cats results</button>
@@ -25,7 +25,7 @@
                 <v-col align="center" v-for="cat in currentPage" :key="cat.id">
                     <div class="cat_container_more">
                     <img :src="cat.url" alt="cat_4">
-                        <p>Votes : {{cat.vote}}</p>
+                        <p class="vote">Votes : {{cat.vote}}</p>
                     </div>
                 </v-col>
             </v-row>
@@ -198,6 +198,27 @@ export default {
 
     .third img{
         border: 5px solid rgb(179, 126, 48);
+    }
+
+    .first p.vote{
+        color: rgb(255, 187, 0);
+        font-weight: bold;
+    }
+
+    .second p.vote{
+        color: rgb(156, 156, 156);
+        font-weight: bold;
+    }
+
+    .third p.vote{
+        color: rgb(179, 126, 48);
+        font-weight: bold;
+    }
+
+    p.vote{
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 0 1px 4px #000;        
     }
 
     .more_btn{
