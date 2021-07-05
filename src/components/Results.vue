@@ -202,7 +202,7 @@ export default {
 
     .more_btn{
         position: relative;
-        top: -50rem;
+        top: -55rem;
     }
 
     .more_btn button{
