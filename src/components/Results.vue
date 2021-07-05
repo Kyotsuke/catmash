@@ -70,7 +70,9 @@ export default {
     seeMore: function(more) {
         this.more = more;
     },
-
+    
+    // function to get all Cats from a database and store then in this.cats
+    // after that, get two cats from sort cats by votes with sortCatByVotes function
     getCats: function() {
         // let self = this;
         const dbRef = firebase.database().ref();
@@ -91,15 +93,17 @@ export default {
         //     self.selectTwoCats();
         // });
     },
-
+    
+    // function to sort all cats that are in this.cats by their vote count
+    // store top three in their data and split what remains with splitRanking() function
     sortCatsByVotes: function(){
         let cats = this.cats;
         cats = Object.keys(cats).map(key => {
             return cats[key];
-        })
+        }) // transform this.cats that is an Object, to an Array
         cats.sort((a, b) => {
             return b.vote - a.vote;
-        });
+        }); // sort all cats by votes count from the higher to the lowest
 
         this.numberOne = cats[0];
         this.numberTwo = cats[1];
@@ -112,6 +116,7 @@ export default {
         this.cats = cats;
     },
 
+    // function to split cats key (Array) by pages by a define number of our choice
     splitRanking: function(cats){
         let catsLength = cats.length;
         let numberPerPages = 36;
@@ -126,6 +131,7 @@ export default {
         this.numberOfPages = numberOfPages;
     },
 
+    // function to change page and refresh this.currentPage with the current page data from this.pages Array
     changePage: function(value){
         if (value == "next"){
             this.page++;
