@@ -114,7 +114,7 @@ export default {
 
     splitRanking: function(cats){
         let catsLength = cats.length;
-        let numberPerPages = 33;
+        let numberPerPages = 36;
         let numberOfPages = Math.ceil(catsLength / numberPerPages);
         let pages = {};
         for (let index = 1; index <= numberOfPages; index++) {
