@@ -43,11 +43,11 @@ export default {
     border-bottom: 1px solid #000;
   }
   .logo{
-    max-width: 5vw;
+    max-width: 4vw;
   }
 
   .nav_btn{
-      margin-top: 2rem;
+      margin-top: 2.5vh;
   }
 
   .nav_btn a{
