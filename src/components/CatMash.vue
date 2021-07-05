@@ -127,8 +127,8 @@ export default {
 
 <style scoped>
     .img_container{
-        width: 40rem;
-        height: 30rem;
+        width: 40vw;
+        height: 55vh;
         margin-top: 5rem;
         background-color: #F4F4F4;
         -webkit-mask-size: cover;
@@ -149,7 +149,7 @@ export default {
     }
 
     .neither_btn{
-        margin-top: 5rem;
+        margin-top: 5vh;
         padding: 0.5rem 2rem;
         border: 3px solid rgb(86, 117, 255);
         border-radius: 10px;
