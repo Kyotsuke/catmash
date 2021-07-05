@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
   .main{
-    background: linear-gradient(90deg, rgb(233, 233, 233) 50%, rgb(230, 230, 230) 50%);
+    background: linear-gradient(90deg, #e4757e 49%, #679ab9 51%);
     height: 100rem;
   }
 </style>

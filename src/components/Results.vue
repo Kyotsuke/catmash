@@ -207,10 +207,10 @@ export default {
 
     .more_btn button{
         padding: 0.5rem 2rem;
-        border: 3px solid rgb(86, 117, 255);
-        border-radius: 10px;
+        border: 3px solid #1d3557;
         font-weight: bold;
-        background-color: #ddd;
+        color: #1d3557;
+        background-color: #f1faee;
     }
 
     .cat_container_more{
@@ -231,22 +231,26 @@ export default {
         padding: 0.5rem 2rem;
         width: 100%;
         border: 3px solid rgb(255, 196, 86);
-        border-radius: 10px;
         font-weight: bold;
-        background-color: #ddd;
+        color: rgb(255, 196, 86);
+        background-color: #eee;
+    }
+
+    .return_btn button:hover{
+        background-color: #fff;
     }
 
     .change_page_btn button{
         margin-top: 2rem;
         padding: 0.5rem 2rem;
         width: 100%;
-        border: 3px solid rgb(86, 117, 255);
-        border-radius: 10px;
+        border: 3px solid #1d3557;
         font-weight: bold;
-        background-color: #ddd;
+        color: #1d3557;
+        background-color: #f1faee;
     }
 
     button:hover{
-        background-color: #eee;
+        background-color: #a8dadc;
     }
 </style>

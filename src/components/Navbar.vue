@@ -39,7 +39,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .nav{
-    background-color: #ccc;
+    background-color: #f1faee;
     border-bottom: 1px solid #000;
   }
   .logo{
@@ -52,15 +52,14 @@ export default {
 
   .nav_btn a{
       padding: 0.5rem 2rem;
-      border: 3px solid rgb(86, 117, 255);
-      border-radius: 10px;
+      border: 3px solid #1d3557;
       font-weight: bold;
-      color: #000;
-      background-color: #ddd;
+      color: #1d3557;
+      background-color: #f1faee;
       text-decoration: none;
   }
 
   .nav_btn a:hover{
-    background-color: #eee;
+    background-color: #a8dadc;
   }
 </style>

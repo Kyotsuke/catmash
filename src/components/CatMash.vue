@@ -151,13 +151,13 @@ export default {
     .neither_btn{
         margin-top: 5vh;
         padding: 0.5rem 2rem;
-        border: 3px solid rgb(86, 117, 255);
-        border-radius: 10px;
+        border: 3px solid #1d3557;
         font-weight: bold;
-        background-color: #ddd;
+        color: #1d3557;
+        background-color: #f1faee;
     }
 
     button:hover{
-        background-color: #eee;
+        background-color: #a8dadc;
     }
 </style>
