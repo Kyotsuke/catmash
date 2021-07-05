@@ -1,6 +1,12 @@
-# catmash
+# CATMASH
+
+## A website where you have to choose the cutest cat between two of them
+
+Website : [Preview](https://catmash.mattieuvendeville.fr/#/) | [Other preview](https://catmash-0721.web.app/#/)
+___
 
 ## Project setup
+### Install all the modules that are require
 ```
 npm install
 ```
@@ -15,10 +21,11 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+___
+## Used technologies
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[VueJS](https://vuejs.org/)<br>
+[VueCLI](https://cli.vuejs.org/)<br>
+[Vuetify](https://vuetifyjs.com/en/)<br>
+[Firebase](https://firebase.google.com/)<br>
+[Jquery](https://jquery.com/)
